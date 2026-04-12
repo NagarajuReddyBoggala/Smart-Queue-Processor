@@ -1,0 +1,6 @@
+#Framework
+fastapi[standard] == 0.135.3
+
+# Clients
+redis == 7.4.0
+pika == 1.3.2

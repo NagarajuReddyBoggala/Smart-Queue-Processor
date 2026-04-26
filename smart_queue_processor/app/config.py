@@ -4,6 +4,8 @@ from functools import lru_cache
 class Settings(BaseSettings):
     app_name: str = "Smart Queue Processor"
     redis_url: str = "redis://localhost:6379/0"
+    redis_stream_group: str = "smart_processor_group"
+    redis_consumer_name: str = "processor_1"
     
     class Config:
         env_file = ".env"

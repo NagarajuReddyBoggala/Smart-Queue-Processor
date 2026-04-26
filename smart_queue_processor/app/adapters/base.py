@@ -4,12 +4,12 @@ from ..models import QueueMessage
 
 class BaseQueueAdapter(ABC):
     @abstractmethod
-    def connect(self) -> None:
+    async def connect(self) -> None:
         """Establish connection to the queue backend."""
         pass
 
     @abstractmethod
-    def publish(self, topic: str, message: QueueMessage) -> str:
+    async def publish(self, topic: str, message: QueueMessage) -> str:
         """
         Publish a message to a specific topic/stream.
         Returns the message ID assigned by the backend.
@@ -17,13 +17,13 @@ class BaseQueueAdapter(ABC):
         pass
 
     @abstractmethod
-    def subscribe(self, topic: str, callback: Callable[[QueueMessage], Any]) -> None:
+    async def subscribe(self, topic: str, callback: Callable[[QueueMessage], Any]) -> None:
         """
         Subscribe to a topic/stream and process messages using the callback.
         """
         pass
 
     @abstractmethod
-    def acknowledge(self, topic: str, message_id: str) -> None:
+    async def acknowledge(self, topic: str, message_id: str) -> None:
         """Acknowledge successful processing of a message."""
         pass

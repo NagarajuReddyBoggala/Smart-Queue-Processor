@@ -6,6 +6,13 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6379/0"
     redis_stream_group: str = "smart_processor_group"
     redis_consumer_name: str = "processor_1"
+    
+    # RabbitMQ Settings
+    rabbitmq_url: str = "amqp://guest:guest@localhost:5672/"
+    
+    # Active Backend
+    queue_backend: str = "redis" # Options: 'redis', 'rabbitmq'
+    
     max_retries: int = 3
     base_backoff_seconds: int = 2
     
